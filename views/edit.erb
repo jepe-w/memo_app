@@ -1,0 +1,15 @@
+<h3 class="title-font">メモの内容を編集</h3>
+<form method="post" action="/memos/<%= params[:id] %>">
+<div>
+  <h4 class="text-font">タイトル</h4>
+  <input class="text-box text-font" type="text" id="title" name="title" value="<%= @title %>">
+
+  <h4 class="text-font">内容</h4>
+  <textarea class="text-box text-font" cols="30" rows="10" id="content" name="content"><%= @content %></textarea>
+</div>
+<div>
+<input type="hidden" name="_method" value="patch">
+<input type="submit" value="保存" class="button submit">
+</div>
+</form>
+<a class="text-font link-text" href="/memos/<%= params[:id] %>">≪メモに戻る</a>
