@@ -2,10 +2,10 @@
 <form method="post" action="/memos/<%= params[:id] %>">
 <div>
   <h4 class="text-font">タイトル</h4>
-  <input class="text-box text-font" type="text" id="title" name="title" value="<%= @title %>">
+  <input class="text-box text-font" type="text" id="title" name="title" value="<%=h @title %>">
 
   <h4 class="text-font">内容</h4>
-  <textarea class="text-box text-font" cols="30" rows="10" id="content" name="content"><%= @content %></textarea>
+  <textarea class="text-box text-font" cols="30" rows="10" id="content" name="content"><%=h @content %></textarea>
 </div>
 <div>
 <input type="hidden" name="_method" value="patch">

@@ -13,6 +13,7 @@
 }
 .link-text{
 	text-decoration: none;
+	margin-top: 10px;
 }
 
 .new-memo{
@@ -22,9 +23,20 @@
 	font-weight:bold;
 }
 .container{
-	width:500px;
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+	border-radius: 2%;
+	display:inline-block;
+	height: 70vh;
+	max-height: 700px;
+	min-height: 500px;
+	width: 50vh;
+	max-width: 500px;
+	min-width: 300px;
 	background-color: #efefef;
-	padding:20px 10px;
+	padding:5% 3%;
 }
 
 .contents-container{
@@ -36,12 +48,12 @@
 .button{
 	color:white;
 	border-radius: 5px;
+	padding:2px 5px;
+	margin:15px 0;
 }
 .button.submit{
 	border:1px solid #888;
 	background-color:#888;
-	padding:2px 5px;
-	margin:15px 0;
 	text-decoration: none;
 }
 .button.delete{
@@ -60,6 +72,7 @@
 	padding:10px 20px;
 	border-radius:5px;
 	resize: none;
+	width:60%;
 }
 
 

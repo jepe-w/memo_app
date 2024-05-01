@@ -6,13 +6,21 @@ require 'json'
 require 'cgi'
 
 FILE_PATH = 'public/memos.json'
+File.new('public/memos.json', 'w') if !File.exist?(FILE_PATH)
 
-def get_memos(file_path)
-  File.open(file_path) { |item| JSON.parse(item.read) }
+
+def read_memos
+  File.open(FILE_PATH) { |item| JSON.parse(item.read) } unless File.zero?(FILE_PATH)
 end
 
-def set_memos(file_path, memos)
-  File.open(file_path, 'w') { |item| JSON.dump(memos, item) }
+def write_memos(memos)
+  File.open(FILE_PATH, 'w') { |item| JSON.dump(memos, item) }
+end
+
+helpers do
+  def h(text)
+    Rack::Utils.escape_html(text)
+  end
 end
 
 get '/' do
@@ -20,7 +28,7 @@ get '/' do
 end
 
 get '/memos' do
-  @memos = get_memos(FILE_PATH)
+  @memos = read_memos
   erb :index
 end
 
@@ -29,7 +37,7 @@ get '/memos/new' do
 end
 
 get '/memos/:id' do
-  memos = get_memos(FILE_PATH)
+  memos = read_memos
   @title = memos[params[:id]]['title']
   @content = memos[params[:id]]['content']
   erb :memo
@@ -39,16 +47,21 @@ post '/memos' do
   title = params[:title]
   content = params[:content]
 
-  memos = get_memos(FILE_PATH)
-  id = (memos.keys.map(&:to_i).max + 1).to_s
+  memos = read_memos
+  if memos == nil || memos.empty?
+    memos = {}
+    id = "1"
+  else
+    id = (memos.keys.map(&:to_i).max + 1).to_s
+  end
   memos[id] = { 'title' => title, 'content' => content }
-  set_memos(FILE_PATH, memos)
+  write_memos(memos)
 
   redirect '/memos'
 end
 
 get '/memos/:id/edit' do
-  memos = get_memos(FILE_PATH)
+  memos = read_memos
   @title = memos[params[:id]]['title']
   @content = memos[params[:id]]['content']
   erb :edit
@@ -58,17 +71,17 @@ patch '/memos/:id' do
   title = params[:title]
   content = params[:content]
 
-  memos = get_memos(FILE_PATH)
+  memos = read_memos
   memos[params[:id]] = { 'title' => title, 'content' => content }
-  set_memos(FILE_PATH, memos)
+  write_memos(memos)
 
   redirect "/memos/#{params[:id]}"
 end
 
 delete '/memos/:id' do
-  memos = get_memos(FILE_PATH)
+  memos = read_memos
   memos.delete(params[:id])
-  set_memos(FILE_PATH, memos)
+  write_memos(memos)
 
   redirect '/memos'
 end
