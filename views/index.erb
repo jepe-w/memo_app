@@ -1,0 +1,16 @@
+<div>
+<h3 class="title-font">メモ一覧</h3>
+  <% if @memos != nil %>
+  <ul>
+  <% @memos.each do |id, post|	%>
+    <li style="margin-bottom:5px;">
+    <a class="title-font link-text" href="/memos/<%= id %>"><%= h post['title'] %></a>
+    </li>
+  <% end %>
+  </ul>
+  <a class="new-memo" href="/memos/new">	<span class="button new">＋</span> メモを追加</a>
+  <% else %>
+
+  <a class="new-memo" href="/memos/new">	<span class="button new">＋</span> メモを追加</a>
+  <% end %>
+</div>

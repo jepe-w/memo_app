@@ -1,0 +1,87 @@
+.main-title{
+	color:#805539;
+}
+
+.title-font{
+	color:#444;
+	font-weight: bold;
+}
+
+.text-font{
+	color:gray;
+	font-family: "Verdana";
+}
+.link-text{
+	text-decoration: none;
+	margin-top: 10px;
+}
+
+.new-memo{
+	color:#444;
+	margin:0 15px;
+	text-decoration: none;
+	font-weight:bold;
+}
+.container{
+	position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+	border-radius: 2%;
+	display:inline-block;
+	height: 70vh;
+	max-height: 700px;
+	min-height: 500px;
+	width: 50vh;
+	max-width: 500px;
+	min-width: 300px;
+	background-color: #efefef;
+	padding:5% 3%;
+}
+
+.contents-container{
+	background-color:#ddd;
+	padding:5px 10px;
+	border-radius:3px
+}
+
+.button{
+	color:white;
+	border-radius: 5px;
+	padding:2px 5px;
+	margin:15px 0;
+}
+.button.submit{
+	border:1px solid #888;
+	background-color:#888;
+	text-decoration: none;
+}
+.button.delete{
+	background-color:#990;
+	border:1px solid #990;
+}
+.button.new{
+	background-color:#666;
+	border-radius: 50%;
+	padding:0 4px;
+}
+
+.text-box{
+	border:1px solid white;
+	background-color:white;
+	padding:10px 20px;
+	border-radius:5px;
+	resize: none;
+	width:60%;
+}
+
+
+input:focus {
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #5265a7;
+}
+
+textarea:focus{
+	outline: none;
+	box-shadow: 0px 0px 3px 0px #5265a7;
+}
