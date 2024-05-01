@@ -4,7 +4,7 @@
   <ul>
   <% @memos.each do |id, post|	%>
     <li style="margin-bottom:5px;">
-    <a class="title-font link-text" href="/memos/<%= id %>"><%=h post['title'] %></a>
+    <a class="title-font link-text" href="/memos/<%= id %>"><%= h post['title'] %></a>
     </li>
   <% end %>
   </ul>

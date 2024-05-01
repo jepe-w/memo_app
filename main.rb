@@ -8,7 +8,6 @@ require 'cgi'
 FILE_PATH = 'public/memos.json'
 File.new('public/memos.json', 'w') if !File.exist?(FILE_PATH)
 
-
 def read_memos
   File.open(FILE_PATH) { |item| JSON.parse(item.read) } unless File.zero?(FILE_PATH)
 end
@@ -48,9 +47,9 @@ post '/memos' do
   content = params[:content]
 
   memos = read_memos
-  if memos == nil || memos.empty?
+  if memos.nil? || memos.empty?
     memos = {}
-    id = "1"
+    id = '1'
   else
     id = (memos.keys.map(&:to_i).max + 1).to_s
   end
